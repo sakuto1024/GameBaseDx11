@@ -21,7 +21,8 @@ void TestScene::Update()
 {
 	if (Input::IsKeyDown(DIK_SPACE))//DIKはダイレクトxのコードらしい
 	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		SceneManager* pSceneManager = (SceneManager*)(this->GetParent());
 		pSceneManager->ChangeScene(SCENE_ID_PLAY);
 	}
 }
