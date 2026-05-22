@@ -8,6 +8,7 @@ public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
 	Bullet(GameObject* parent);
+	~Bullet();
 
 	//初期化
 	void Initialize() override;
@@ -23,6 +24,7 @@ public:
 
 private:
 	int hModel_;    //モデルのハンドル
-	Transform tr_;  //トランフォーム(アフィン返還のパラメータを保存している)
+	//Transform tr_;  //トランフォーム(アフィン返還のパラメータを保存している)
+	float speed_;   //弾の速さ
 };
 

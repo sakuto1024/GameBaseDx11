@@ -21,8 +21,8 @@ public:
 	void Release() override;
 
 private:
-	int hModel_; //モデルのハンドル
-	Transform ot_; //おでん用のトランスフォーム
-	float speed_;
+	//int hModel_; //モデルのハンドル
+	//Transform ot_; //おでん用のトランスフォーム
+	//float speed_;
 };
 

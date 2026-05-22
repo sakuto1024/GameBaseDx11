@@ -13,41 +13,42 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("spaceShip.fbx");
 	assert(hModel_ >= 0);
-	tr_.position_ = { 0.0f, -2.5f, 0.0f };
-	tr_.rotate_ = { 0.0f, 180.0f, 0.0f };
+	transform_.position_ = { 0.0f, 0.0f, 0.0f };
+	transform_.rotate_ = { 0.0f, 180.0f, 0.0f };
 }
 
 void Player::Update()
 {
 	if (Input::IsKey(DIK_LEFT) || Input::IsKey(DIK_A))
 	{
-		tr_.position_.x += -0.2f;
+		transform_.position_.x += -0.2f;
 	}
 
 	if (Input::IsKey(DIK_RIGHT) || Input::IsKey(DIK_D))
 	{
-		tr_.position_.x += 0.2f;
+		transform_.position_.x += 0.2f;
 	}
 
 	if (Input::IsKey(DIK_UP) || Input::IsKey(DIK_W))
 	{
-		tr_.position_.z += 0.2f;
+		transform_.position_.z += 0.2f;
 	}
 
 	if (Input::IsKey(DIK_DOWN) || Input::IsKey(DIK_S))
 	{
-		tr_.position_.z += -0.2f;
+		transform_.position_.z += -0.2f;
 	}
 
-	if (Input::IsKey(DIK_SPACE))
+	if (Input::IsKeyDown(DIK_SPACE))
 	{
-		Instantiate<Bullet>(this);
+		Bullet *pBullet = Instantiate<Bullet>(this->GetParent());
+		pBullet->SetPosition(transform_.position_);
 	}
 }
 
 void Player::Draw()
 {
-	Model::SetTransform(hModel_, tr_);
+	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
 }
 
