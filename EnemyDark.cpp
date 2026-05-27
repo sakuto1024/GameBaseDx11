@@ -1,30 +1,31 @@
-#include "Enemy.h"
+#include "EnemyDark.h"
 #include "Engine\\Model.h"
 #include "Engine\\Input.h"
 #include "Engine\\SphereCollider.h"
 
-Enemy::Enemy(GameObject* parent)
-	:GameObject(parent, "Enemy"), hModel_(-1), speed_(0.01f)
+EnemyDark::EnemyDark(GameObject* parent)
+	:GameObject(parent, "EnemyDark"), hModel_(-1), speed_(0.1f)
 {
 }
 
-Enemy::~Enemy()
+EnemyDark::~EnemyDark()
 {
 }
 
-void Enemy::Initialize()
+void EnemyDark::Initialize()
 {
-	hModel_ = Model::Load("Oden.fbx");
+	hModel_ = Model::Load("EnemyDark.fbx");
 	assert(hModel_ >= 0);
 
-	//transform_.position_ = { 0.0f, 0.0f, 20.0f };
-	//transform_.scale_ = { 0.5f, 0.5f, 0.5f };
+	transform_.position_ = { 200.0f, 0.0f, 200.0f };
+	transform_.scale_ = { 0.5f, 0.5f, 0.5f };
+	transform_.rotate_ = { 0.0f, 180.0f, 0.0f };
 
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.0f);
 	AddCollider(collider);
 }
 
-void Enemy::Update()
+void EnemyDark::Update()
 {
 	//ot_.position_ = { 0.0f, 0.0f, 0.0f };
 
@@ -36,7 +37,7 @@ void Enemy::Update()
 
 	//ot_.rotate_.y = time;
 	time += 0.025f;
-	transform_.position_.x = 6.0 * sin(time);
+	transform_.position_.x = 6.0 * cos(time);
 
 	//float posx = 6.0 * sin(0.2f * time);
 	//float posy = 6.0 * cos(3.0f * time);
@@ -62,17 +63,17 @@ void Enemy::Update()
 	//}
 }
 
-void Enemy::Draw()
+void EnemyDark::Draw()
 {
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
 }
 
-void Enemy::Release()
+void EnemyDark::Release()
 {
 }
 
-void Enemy::OnCollision(GameObject* pTarget)
+void EnemyDark::OnCollision(GameObject* pTarget)
 {
 	if (pTarget->GetObjectName() == "Bullet")
 	{
