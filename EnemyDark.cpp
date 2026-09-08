@@ -14,15 +14,15 @@ EnemyDark::~EnemyDark()
 
 void EnemyDark::Initialize()
 {
-	hModel_ = Model::Load("EnemyDark.fbx");
+	hModel_ = Model::Load("DarkEnemy.fbx");
 	assert(hModel_ >= 0);
 
 	transform_.position_ = { 200.0f, 0.0f, 200.0f };
 	transform_.scale_ = { 0.5f, 0.5f, 0.5f };
 	transform_.rotate_ = { 0.0f, 180.0f, 0.0f };
 
-	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.0f);
-	AddCollider(collider);
+	//SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.0f);
+	//AddCollider(collider);
 }
 
 void EnemyDark::Update()

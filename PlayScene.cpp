@@ -24,11 +24,19 @@ PlayScene::PlayScene(GameObject* parent)
 void PlayScene::Initialize()
 {
 	Instantiate<Player>(this);  //Playerのインスタンス＝プレイヤーのオブジェクトを作る
-	for (int i = 0; i < ENEMY_MAX; i++)
+	/*for (int i = 0; i < ENEMY_MAX; i++)
 	{
 		Enemy* e = Instantiate<Enemy>(this);
 		e->SetPosition(XMFLOAT3(transform_.position_.x + (i * 200.0f), transform_.position_.y, transform_.position_.z));
+	}*/
+
+	for (int i = 0; i < 10; i++)
+	{
+		Enemy* e = Instantiate<Enemy>(this);
+		e->SetPosition(XMFLOAT3((float)(rand() % 20 - 10), 0, (float)(rand() % 50 - 10)));
+
 	}
+
 	//Instantiate<Enemy>(this);
 	//Instantiate<EnemyDark>(this);
 	//Instantiate<Bullet>(this);  //Bulletのインスタンス＝弾オブジェクトを作る

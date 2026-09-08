@@ -30,13 +30,15 @@ void Enemy::Update()
 
 	static float time = 0.0f;
 
-	transform_.position_ = { 0.0f, 0.0f, 10.0f };
+	//transform_.position_ = { 0.0f, 0.0f, 10.0f };
 	transform_.scale_ = { 0.5f, 0.5f, 0.5f };
 	transform_.rotate_ = { 0.0f, 0.0f, 0.0f };
 
 	//ot_.rotate_.y = time;
 	time += 0.025f;
-	transform_.position_.x = 6.0 * sin(time);
+	//transform_.position_.x = ((float)(rand() % 200 - 100) ) * (sin(time) / 10.0f);
+
+	transform_.position_.x = 2.0f * sin(time);
 
 	//float posx = 6.0 * sin(0.2f * time);
 	//float posy = 6.0 * cos(3.0f * time);
