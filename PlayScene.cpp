@@ -33,7 +33,7 @@ void PlayScene::Initialize()
 	for (int i = 0; i < 10; i++)
 	{
 		Enemy* e = Instantiate<Enemy>(this);
-		e->SetPosition(XMFLOAT3((float)(rand() % 20 - 10), 0, (float)(rand() % 50 - 10)));
+		e->SetPosition(XMFLOAT3((float)(rand() % 20 - 10), 0, (float)(rand() % 40 + 10)));
 
 	}
 
